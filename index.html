@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nazananas | DevOps Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #4dabf7;
+      --secondary: #da77f2;
+      --dark-bg: #0f1115;
+      --card-bg: #1a1d23;
+      --header-bg: linear-gradient(135deg, #1f2229 0%, #2d313a 100%);
+      --text-light: #e9ecef;
+      --text-muted: #aaa;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    header {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: var(--header-bg);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+    }
+    
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0.5rem 0;
+      animation: fadeInDown 1s ease-out;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      font-weight: 700;
+    }
+    
+    header p {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      animation: fadeInUp 1s ease-out;
+      margin: 1.5rem auto 0;
+      position: relative;
+      display: inline-block;
+      max-width: 600px;
+    }
+    
+    header p::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin: 3rem 0 2rem;
+      font-size: 2rem;
+      color: var(--text-light);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+    
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem 0;
+      gap: 2rem;
+    }
+    
+    .project {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(77, 171, 247, 0.3);
+    }
+    
+    .project img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+    }
+    
+    .project h3 {
+      margin: 1rem 0;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+    
+    .project p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    
+    .skill-tag {
+      background: rgba(77, 171, 247, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(77, 171, 247, 0.3);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .github-link {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .github-link a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid rgba(77, 171, 247, 0.3);
+      border-radius: 30px;
+      background: rgba(77, 171, 247, 0.1);
+    }
+    
+    .github-link a:hover {
+      background: rgba(77, 171, 247, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(77, 171, 247, 0.2);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1f2229;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Nazananas</h1>
+      <p>DevOps Engineer & Cloud Infrastructure Specialist</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <img src="images/jenkins.png" alt="Jenkins Logo" />
+          <h3>CI/CD with Jenkins</h3>
+          <p>Automated build and deployment pipelines using Jenkins and GitLab CI/CD with integrated testing and security scanning.</p>
+        </div>
+
+        <div class="project">
+          <img src="images/docker.png" alt="Docker Logo" />
+          <h3>Dockerized Apps</h3>
+          <p>Containerized microservices architecture with Docker, deployed to AWS ECS & EKS with auto-scaling.</p>
+        </div>
+
+        <div class="project">
+          <img src="images/kubernetes.png" alt="Kubernetes Logo" />
+          <h3>Kubernetes Deployments</h3>
+          <p>Infrastructure automation and orchestration with Kubernetes, Helm charts, and ArgoCD for GitOps workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Ansible</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">GitLab CI/CD</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Helm</span>
+        <span class="skill-tag">ArgoCD</span>
+      </div>
+    </section>
+
+    <div class="github-link">
+      <a href="https://github.com/nazananas" target="_blank">
+        <i class="fab fa-github"></i> Explore My GitHub
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/nazananas" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/nazananas" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:contact@nazananas.com"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>&copy; 2023 Nazananas. All rights reserved.</p>
+  </footer>
+</body>
+</html>
